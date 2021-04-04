@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <center>
+            <h2>Data Diri Mahasiswa</h2>
+            <form>
+                <table>
+                    <tr>
+                        <td><label for="name">Nama Lengkap</label></td>
+                        <td>: <input type="text" id="name" name="name"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="tmplahir">Tempat Lahir</label></td>
+                        <td>: <input type="text" id="tmplahir" name="tmplahir"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="tgllahir">Tanggal Lahir</label></td>
+                        <td>: <input type="date" id="tgllahir" name="tgllahir"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="alamat">Alamat Asal</label></td>
+                        <td>: <input type="text" id="alamat" name="alamat"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="ktp">No. KTP</label></td>
+                        <td>: <input type="text" id="ktp" name="ktp"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Email</label></td>
+                        <td>: <input type="email" id="email" name="email"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="gender">Jenis Kelamin</label></td>
+                        <td>: 
+                            <select id="gender" name="gender">
+                                <option>Pilih Jenis Kelamin</option>
+                                <option value="pria">Pria</option>
+                                <option value="wanita">Wanita</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="goldar">Golongan Darah</label></td>
+                        <td>: 
+                            <select id="goldar" name="goldar">
+                                <option>Pilih Golongan Darah</option>
+                                <option value="goldarA">A</option>
+                                <option value="goldarB">B</option>
+                                <option value="goldarAB">AB</option>
+                                <option value="goldarO">O</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="agama">Agama</label></td>
+                        <td>: 
+                            <select id="agama" name="agama">
+                                <option>Pilih Agama</option>
+                                <option value="islam">ISLAM</option>
+                                <option value="kristen">KRISTEN</option>
+                                <option value="khatolik">KATHOLIK</option>
+                                <option value="hindu">HINDU</option>
+                                <option value="budha">BUDHA</option>
+                                <option value="konghuchu">KONG HU CHU</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="fileAkta">Akta Kelahiran</label><br></td>
+                        <td>: <input type="file" id="fileAkta" name="fileAkta"></td>
+                        <td>*) MAX Size 200kb, Format : .jpg</td>
+                    </tr>
+                </table>
+
+                <input type="submit" value="Submit" style="margin-top: 30px;">
+            </form>
+        </center>
+    </body>
+</html>
