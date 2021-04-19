@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM NAVIGATIONS</title>
+    </head>
+    <body>
+        <h1 id="id01">My First Page</h1>
+        <p id="id02"></p>
+        <p id="id03"></p>
+        <p id="id04"></p>
+        
+        <script>
+        document.getElementById("id02").innerHTML = document.getElementById("id01").childNodes[0].nodeValue;
+        </script>
+
+        <script>
+        document.getElementById("id03").innerHTML = document.getElementById("id01").nodeName;
+        </script>
+
+        <script>
+        document.getElementById("id04").innerHTML = document.getElementById("id01").nodeType;
+        </script>
+
+        <p><b>Hello World!</b></p>
+
+        <div>
+            <p>The DOM is very useful!</p>
+            <p>This example demonstrates the <b>document.body</b> property.</p>
+        </div>
+
+        <script>
+        alert(document.body.innerHTML);
+        </script>
+
+    </body>
+</html>

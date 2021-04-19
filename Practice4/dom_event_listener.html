@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM EVENT LISTENER</title>
+        <style>
+            #myDiv1, #myDiv2 {
+              background-color: coral;
+              padding: 50px;
+            }
+            
+            #myP1, #myP2 {
+              background-color: white; 
+              font-size: 20px;
+              border: 1px solid;
+              padding: 20px;
+            }
+
+            #myDIV {
+                background-color: coral;
+                border: 1px solid;
+                padding: 50px;
+                color: white;
+                font-size: 20px;
+            }
+        </style>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    </head>
+    <body>
+        <h1>JavaScript addEventListener()</h1>
+        <p>This example uses the addEventListener() method to attach a click event to a button.</p>
+
+        <button id="myBtn">Try it</button>
+
+        <p id="demo"></p>
+
+        <script>
+        var x = document.getElementById("myBtn");
+        x.addEventListener("click", displayDate);
+        x.addEventListener("mouseover", myMouseOver);
+        x.addEventListener("mouseout", myMouseOut);
+        
+        function displayDate() {
+            document.getElementById("demo").innerHTML = Date();
+            document.getElementById("demo").innerHTML += "<br>Clicked!<br>";
+        }
+
+        function myMouseOver() {
+            document.getElementById("demo").innerHTML += "Moused over!<br>";
+        }
+
+        function myMouseOut() {
+            document.getElementById("demo").innerHTML += "Moused out!<br>";
+        }
+        </script>
+
+        <br>
+
+        <h2>Event Bubbling or Event Capturing?</h2>
+        
+        <div id="myDiv1">
+            <h2>Bubbling:</h2>
+            <p id="myP1">Click me!</p>
+        </div><br>
+        
+        <div id="myDiv2">
+            <h2>Capturing:</h2>
+            <p id="myP2">Click me!</p>
+        </div>
+        
+        <script>
+        document.getElementById("myP1").addEventListener("click", function() {
+            alert("You clicked the white element!");
+        }, false);
+        
+        document.getElementById("myDiv1").addEventListener("click", function() {
+            alert("You clicked the orange element!");
+        }, false);
+        
+        document.getElementById("myP2").addEventListener("click", function() {
+            alert("You clicked the white element!");
+        }, true);
+        
+        document.getElementById("myDiv2").addEventListener("click", function() {
+            alert("You clicked the orange element!");
+        }, true);
+        </script>
+
+    </body>
+</html> 

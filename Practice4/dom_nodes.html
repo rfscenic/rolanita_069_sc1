@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM NODES</title>
+    </head>
+    <body>
+
+        <div id="div1">
+            <p id="p1">This is a paragraph.</p>
+            <p id="p2">This is another paragraph.</p>
+        </div>
+
+        <script>
+        var para = document.createElement("p");
+        var node = document.createTextNode("This is new.");
+        para.appendChild(node);
+        
+        var element = document.getElementById("div1");
+        element.appendChild(para);
+        </script>
+
+        <script>
+        var para = document.createElement("p");
+        var node = document.createTextNode("This is new insert before.");
+        para.appendChild(node);
+        
+        var element = document.getElementById("div1");
+        var child = document.getElementById("p1");
+        element.insertBefore(para,child);
+        </script>
+
+        <button onclick="myFunction()">Remove Element</button>
+
+        <script>
+        function myFunction() {
+            var elmnt = document.getElementById("p1");
+            elmnt.remove();
+        }
+        </script>
+
+    </body>
+</html>
