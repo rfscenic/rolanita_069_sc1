@@ -292,17 +292,17 @@
                     
                     for (i = 0; i < myData['quotes'].length; i++) {
                         var item = $( "#quote-item" ).clone();
-                        item.find('#card-description').html(myData['quotes'][i].description);
+                        item.find('#card-description').html(myData['quotes'][i].description.replace('"','\"').replace(/\n/g,'<br />'));
                         item.removeAttr( "style" );
                         item.find('#card-img').attr('src', myData['quotes'][i].images);
                         item.find('#card-title').html(myData['quotes'][i].title);
                         item.find('#card-name').html(myData['quotes'][i].name + " (" + myData['quotes'][i].class + ")");
                         item.find('#card-date').html(myData['quotes'][i].updated);
-                        item.find('#view-detail').attr("onClick","callModal('"+myData['quotes'][i].title+"','"+myData['quotes'][i].name+ " (" + myData['quotes'][i].class + ")','"+myData['quotes'][i].images+"','"+myData['quotes'][i].description+"')");
-
-                        item.find('#edit-detail').attr("onClick","callInputModal(\"Edit Quote\",\""+myData['quotes'][i].title+"\",\""+myData['quotes'][i].description.replace('"','\\"').replace(/(\r\n|\n|\r)/gm,'<br>')+"\",\""+myData['quotes'][i].images+"\",\""+myData['quotes'][i].quote_id+"\")");
+                        
+                        item.find('#view-detail').attr("onClick","callModal(\""+myData['quotes'][i].title+"\",\""+myData['quotes'][i].name+ " (" + myData['quotes'][i].class + ")\",\""+myData['quotes'][i].images+"\",\""+myData['quotes'][i].description.replace('"','\\"').replace(/(\r\n|\n|\r)/gm,'<br>')+"\")");
                         item.find('#delete-quote').attr("onClick","deleteQuote("+myData['quotes'][i].quote_id+",'"+myData['quotes'][i].title+"')");
-
+                        item.find('#edit-detail').attr("onClick","callInputModal(\"Edit Quote\",\""+myData['quotes'][i].title+"\",\""+myData['quotes'][i].description.replace('"','\\"').replace(/(\r\n|\n|\r)/gm,'<br>')+"\",\""+myData['quotes'][i].images+"\",\""+myData['quotes'][i].quote_id+"\")");
+                        
                         if(sessionStorage.getItem("student_id")!=myData['quotes'][i].student_id){
                             item.find('#edit-detail').attr("style","display: none;");
                             item.find('#delete-quote').attr("style","display: none;");
