@@ -86,6 +86,7 @@
                                         <div class="btn-group">
                                             <button type="button" id="view-detail" class="btn btn-sm btn-outline-secondary">View</button>
                                             <button type="button" id="edit-detail" class="btn btn-sm btn-outline-primary">Edit</button>
+                                            <button type="button" id="delete-quote" class="btn btn-sm btn-outline-danger">Delete</button>
                                         </div>
                                         <small class="text-muted" id="card-date">9 mins</small>
                                     </div>
@@ -168,6 +169,26 @@
         <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
         <script>
+            
+            function deleteQuote(quote_id,title){
+                var r = confirm("Delete "+title+"?");
+                if (r == true) {
+                    $.ajax({
+                        type: 'DELETE',
+                        url: "https://quotesbeta.informatika.app/index.php/quotes/q/quote_id/"+quote_id,
+                        beforeSend: function( xhr ) {
+                            xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+                        },
+                        error: function(xhr, status, error) {
+                            console.log(xhr);
+                        }
+                    })
+                    .done(function( data ) {
+                        console.log(data);
+                        getQuotes('https://quotesbeta.informatika.app/index.php/quotes/q/my_quote/'+sessionStorage.getItem("nim"),'My Quotes');
+                    });
+                }
+            }
         
             function updateQuote(data){
                 console.log(data);
@@ -280,9 +301,11 @@
                         item.find('#view-detail').attr("onClick","callModal('"+myData['quotes'][i].title+"','"+myData['quotes'][i].name+ " (" + myData['quotes'][i].class + ")','"+myData['quotes'][i].images+"','"+myData['quotes'][i].description+"')");
 
                         item.find('#edit-detail').attr("onClick","callInputModal(\"Edit Quote\",\""+myData['quotes'][i].title+"\",\""+myData['quotes'][i].description.replace('"','\\"').replace(/(\r\n|\n|\r)/gm,'<br>')+"\",\""+myData['quotes'][i].images+"\",\""+myData['quotes'][i].quote_id+"\")");
+                        item.find('#delete-quote').attr("onClick","deleteQuote("+myData['quotes'][i].quote_id+",'"+myData['quotes'][i].title+"')");
 
                         if(sessionStorage.getItem("student_id")!=myData['quotes'][i].student_id){
                             item.find('#edit-detail').attr("style","display: none;");
+                            item.find('#delete-quote').attr("style","display: none;");
                         }
 
                         item.appendTo("#quote-items");
