@@ -2,10 +2,13 @@
     include "koneksi.php";
     $qkelas = "select * from kelas";
     $data_kelas = $conn->query($qkelas);
-    $qmahasiswa = "select * from mahasiswa";
+    $qmahasiswa = "select kelas.nama, mahasiswa.nama_lengkap, mahasiswa.alamat from kelas inner join mahasiswa on kelas.kelas_id = mahasiswa.kelas_id";
     $data_mahasiswa = $conn->query($qmahasiswa);
-    $jml_data_mahasiswa = mysqli_num_rows($data_mahasiswa);
-
+    /*
+    $qjumlah = "SELECT COUNT(*) as jumlah from mahasiswa";
+    $jumlah = $conn->query($qjumlah);
+    */
+    $jumlah_data = mysqli_num_rows($data_mahasiswa);
 ?>
 <!doctype html>
 <html lang="en">
@@ -67,7 +70,7 @@
 
                         <!-- Menampilkan jumlah mahasiswa -->
                         <span class="badge badge-secondary badge-pill">
-                            <?php echo  $jml_data_mahasiswa; ?>
+                            <?php echo $jumlah_data; ?>
                         </span>
                     </h4>
 
@@ -85,7 +88,9 @@
                                 </small>
                             </div>
                             <span class="text-muted">
-                                <?php echo $value['kelas_id'] ?>
+                                <?php
+                                    echo $value['nama']; 
+                                ?>
                             </span>
                         </li>
                     </ul>
