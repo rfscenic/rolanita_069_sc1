@@ -3,7 +3,9 @@
     $qkelas = "select * from kelas";
     $data_kelas = $conn->query($qkelas);
     $qmahasiswa = "select * from mahasiswa";
-    $data_mahasiswa = $conn->query($qmahasiswa); 
+    $data_mahasiswa = $conn->query($qmahasiswa);
+    $jml_data_mahasiswa = mysqli_num_rows($data_mahasiswa);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -62,7 +64,11 @@
                     <!-- Menampilkan Data Mahasiswa -->
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                         <span class="text-muted">Data Mahasiswa</span>
-                        <span class="badge badge-secondary badge-pill">0</span>
+
+                        <!-- Menampilkan jumlah mahasiswa -->
+                        <span class="badge badge-secondary badge-pill">
+                            <?php echo  $jml_data_mahasiswa; ?>
+                        </span>
                     </h4>
 
                     <?php
