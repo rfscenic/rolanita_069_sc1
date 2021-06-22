@@ -6,6 +6,13 @@
     $data_mahasiswa = $conn->query($qmahasiswa);
     $qjumlah = "SELECT COUNT(*) as jumlah from mahasiswa";
     $jumlah_data = $conn->query($qjumlah);
+
+    // Update_form
+    $qselect_mahasiswa = "SELECT * from mahasiswa LEFT JOIN kelas ON kelas.kelas_id = mahasiswa.kelas_id WHERE mahasiswa_id = ".$_GET['mahasiswa_id'];
+    
+    foreach($conn->query($qselect_mahasiswa) as $value){
+        $data_select_mahasiswa=$value;
+    };
 ?>
 <!doctype html>
 <html lang="en">
@@ -119,14 +126,19 @@
                     <!-- Membuat Form Input Data Mahasiswa -->
                     <h4 class="mb-3">Input Data</h4>
                     <form action="simpan_mahasiswa.php" method="POST">
+                        
+                        <!-- Update data -->
+                        <input type="hidden" name="mahasiswa_id" value="<?php echo $data_select_mahasiswa['mahasiswa_id'] ?>">
+                        <!-- End Update data -->
+
                         <div class="mb-3">
                             <label for="nama_lengkap">Nama Lengkap</label>
-                            <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" required>
+                            <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" value="<?php echo $data_select_mahasiswa['nama_lengkap'] ?>" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="alamat">Alamat</label>
-                            <input type="text" class="form-control" id="alamat" name="alamat" required>
+                            <input type="text" class="form-control" id="alamat" name="alamat" value="<?php echo $data_select_mahasiswa['alamat'] ?>" required>
                         </div>
 
                         <div class="mb-3">
@@ -136,8 +148,15 @@
 
                                 <?php
                                     foreach($data_kelas as $index => $value){
+                                        // Update data
+                                        if($data_select_mahasiswa['kelas_id']==$value['kelas_id']){
+                                            $is_selected = 'selected';
+                                        } else {
+                                            $is_selected = '';
+                                        }
+                                        // end Update data
                                 ?>
-                                <option value="<?php echo $value['kelas_id'] ?>"><?php echo $value['nama'] ?></option>
+                                <option <?php echo $is_selected ?> value="<?php echo $value['kelas_id'] ?>"><?php echo $value['nama'] ?></option>
                                 <?php
                                     }
                                 ?>
@@ -148,7 +167,8 @@
 
                         </div>
                         <hr class="mb-4">
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Simpan Data</button>
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Update Data</button>
+                        <a href="index.php" class="btn btn-warning btn-lg btn-block" type="submit">Batal</a>
                     </form>
                 </div>
             </div>
