@@ -2,7 +2,7 @@
     include "koneksi.php";
     $qkelas = "select * from kelas";
     $data_kelas = $conn->query($qkelas);
-    $qmahasiswa = "select kelas.nama, mahasiswa.nama_lengkap, mahasiswa.alamat from kelas inner join mahasiswa on kelas.kelas_id = mahasiswa.kelas_id";
+    $qmahasiswa = "select * from kelas inner join mahasiswa on kelas.kelas_id = mahasiswa.kelas_id";
     $data_mahasiswa = $conn->query($qmahasiswa);
     $qjumlah = "SELECT COUNT(*) as jumlah from mahasiswa";
     $jumlah_data = $conn->query($qjumlah);
