@@ -1,5 +1,8 @@
 <?php 
     include "koneksi.php";
+
+    session_start();
+
     $qkelas = "select * from kelas";
     $data_kelas = $conn->query($qkelas);
     $qmahasiswa = "select * from kelas inner join mahasiswa on kelas.kelas_id = mahasiswa.kelas_id";
@@ -118,6 +121,12 @@
 
                     <!-- Membuat Form Input Data Mahasiswa -->
                     <h4 class="mb-3">Input Data</h4>
+
+                    <div>
+                        <!-- Membaca pesan Session -->
+                        <?php include "read_message.php" ?>
+                    </div>
+
                     <form action="simpan_mahasiswa.php" method="POST">
                         <div class="mb-3">
                             <label for="nama_lengkap">Nama Lengkap</label>

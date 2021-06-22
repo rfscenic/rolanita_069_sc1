@@ -1,5 +1,6 @@
 <?php
     include "koneksi.php";
+    include "create_message.php";
 
     if(isset($_POST['mahasiswa_id'])){
         //Kondisi Update
@@ -7,10 +8,12 @@
         
         if ($conn->query($sql) === TRUE) {
             $conn->close();
+            create_message("Ubah Data Berhasil","success","check");
             header("location:".$_SERVER['HTTP_REFERER']);
             exit();
         } else {
             $conn->close();
+            create_message("Error: " . $sql . "<br>" . $conn->error,"danger","warning");
             header("location:".$_SERVER['HTTP_REFERER']);
             exit();
         }
@@ -20,10 +23,12 @@
         
         if ($conn->query($sql) === TRUE) {
             $conn->close();
+            create_message("Simpan Data Berhasil","success","check");
             header("location:index.php");
             exit();
         } else {
             $conn->close();
+            create_message("Error: " . $sql . "<br>" . $conn->error,"danger","warning");
             header("location:index.php");
             exit();
         }
