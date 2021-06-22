@@ -4,11 +4,8 @@
     $data_kelas = $conn->query($qkelas);
     $qmahasiswa = "select kelas.nama, mahasiswa.nama_lengkap, mahasiswa.alamat from kelas inner join mahasiswa on kelas.kelas_id = mahasiswa.kelas_id";
     $data_mahasiswa = $conn->query($qmahasiswa);
-    /*
     $qjumlah = "SELECT COUNT(*) as jumlah from mahasiswa";
-    $jumlah = $conn->query($qjumlah);
-    */
-    $jumlah_data = mysqli_num_rows($data_mahasiswa);
+    $jumlah_data = $conn->query($qjumlah);
 ?>
 <!doctype html>
 <html lang="en">
@@ -69,9 +66,15 @@
                         <span class="text-muted">Data Mahasiswa</span>
 
                         <!-- Menampilkan jumlah mahasiswa -->
+                        <?php
+                            foreach($jumlah_data as $index => $value){
+                        ?>
                         <span class="badge badge-secondary badge-pill">
-                            <?php echo $jumlah_data; ?>
+                            <?php echo $value['jumlah']; ?>
                         </span>
+                        <?php 
+                            }
+                        ?>
                     </h4>
 
                     <?php
@@ -146,7 +149,7 @@
                 <li class="list-inline-item"><a href="#">Support</a></li>
             </ul>
         </footer>
-        
+        </div>
         <script src="../node_modules/jquery/dist/jquery.min.js" crossorigin="anonymous"></script>
         <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     </body>
