@@ -2,7 +2,7 @@
     include "koneksi.php";
     $qkelas = "select * from kelas";
     $data_kelas = $conn->query($qkelas);
-    $qmahasiswa = "select kelas.nama, mahasiswa.nama_lengkap, mahasiswa.alamat from kelas inner join mahasiswa on kelas.kelas_id = mahasiswa.kelas_id";
+    $qmahasiswa = "select * from kelas inner join mahasiswa on kelas.kelas_id = mahasiswa.kelas_id";
     $data_mahasiswa = $conn->query($qmahasiswa);
     $qjumlah = "SELECT COUNT(*) as jumlah from mahasiswa";
     $jumlah_data = $conn->query($qjumlah);
@@ -21,6 +21,9 @@
         <!-- Bootstrap core CSS -->
         <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         
+        <!-- Font-Awesome -->
+        <link href="../node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
         <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -95,6 +98,11 @@
                                     echo $value['nama']; 
                                 ?>
                             </span>
+
+                            <!-- Tombol hapus data -->
+                            <a href="hapus_data.php?mahasiswa_id=<?php echo $value['mahasiswa_id'] ?>" type="button" class="close">
+                                <span class="fa fa-trash"></span>
+                            </a>
                         </li>
                     </ul>
                     <?php

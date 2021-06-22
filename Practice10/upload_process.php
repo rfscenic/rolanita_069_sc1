@@ -1,5 +1,5 @@
 <?php
-    // inisial awal
+    // inisialisasi awal
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["gambar_contoh"]["name"]);
     $error = false;
