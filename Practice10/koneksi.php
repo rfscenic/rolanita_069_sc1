@@ -1,8 +1,8 @@
 <?php
     $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "db_practice9";
+    $username = "ifscxyz1_18102069";
+    $password = "qnwGbR8vfDYe";
+    $dbname = "ifscxyz1_18102069";
 
     // Membuat koneksi
     $conn = new mysqli($servername, $username, $password, $dbname);

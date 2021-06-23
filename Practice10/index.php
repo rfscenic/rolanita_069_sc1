@@ -5,7 +5,7 @@
 
     $qkelas = "select * from kelas";
     $data_kelas = $conn->query($qkelas);
-    $qmahasiswa = "select * from kelas inner join mahasiswa on kelas.kelas_id = mahasiswa.kelas_id";
+    $qmahasiswa = "SELECT * from kelas INNER JOIN mahasiswa on kelas.kelas_id = mahasiswa.kelas_id";
     $data_mahasiswa = $conn->query($qmahasiswa);
     $qjumlah = "SELECT COUNT(*) as jumlah from mahasiswa";
     $jumlah_data = $conn->query($qjumlah);
@@ -88,6 +88,13 @@
                     ?>
                     <ul class="list-group mb-3">
                         <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            
+                            <!-- Menampilkan foto -->
+                            <div>
+                                <span>
+                                    <img class="img-muted" src="uploads/<?=$value['foto']?>" width="80px" height="100px">
+                                </span>
+                            </div>
                             <div>
                                 <h6 class="my-0">
                                     <?php echo $value['nama_lengkap'] ?>
@@ -127,7 +134,7 @@
                         <?php include "read_message.php" ?>
                     </div>
 
-                    <form action="simpan_mahasiswa.php" method="POST">
+                    <form action="simpan_mahasiswa.php" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="nama_lengkap">Nama Lengkap</label>
                             <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" required>
@@ -153,6 +160,12 @@
                             </select>
                         </div>
 
+                        <!-- Menambah gambar -->
+                        <div class="mb-3">
+                            <label for="foto">Pilih Gambar</label><br>
+                            <input type="file" name="foto" id="foto" required><br>
+                        </div>
+
                         <div class="row">
 
                         </div>
@@ -164,7 +177,7 @@
         </div>
         
         <footer class="my-5 pt-5 text-muted text-center text-small">
-            <p class="mb-1">&copy; 2017-2019 Company Name</p>
+            <p class="mb-1">&copy; 2021 Rolanita Scenic Faravati</p>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="#">Privacy</a></li>
                 <li class="list-inline-item"><a href="#">Terms</a></li>
