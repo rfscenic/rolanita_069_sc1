@@ -16,13 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/student/create', 'StudentController@create') ->name('student.create');
-Route::post('/student', 'StudentController@store') ->name('student.store');
-Route::get('/student', 'StudentController@index') ->name('student.index');
-Route::get('/student/{student}', 'StudentController@show') ->name('student.show');
-Route::get('/student/{student}/edit', 'StudentController@edit') ->name('student.edit');
-Route::patch('/student/{student}', 'StudentController@update') ->name('student.update');
-Route::delete('/student/{student}', 'StudentController@destroy') ->name('student.destroy');
+Route::get('/student/create', 'StudentController@create') ->name('student.create')->middleware('login_auth');
+Route::post('/student', 'StudentController@store') ->name('student.store')->middleware('login_auth');
+Route::get('/student', 'StudentController@index') ->name('student.index')->middleware('login_auth');
+Route::get('/student/{student}', 'StudentController@show') ->name('student.show')->middleware('login_auth');
+Route::get('/student/{student}/edit', 'StudentController@edit') ->name('student.edit')->middleware('login_auth');
+Route::patch('/student/{student}', 'StudentController@update') ->name('student.update')->middleware('login_auth');
+Route::delete('/student/{student}', 'StudentController@destroy') ->name('student.destroy')->middleware('login_auth');
 
 Route::get('/login', 'AdminController@index')->name('login.index');
 Route::get('/logout', 'AdminController@logout')->name('login.logout');
