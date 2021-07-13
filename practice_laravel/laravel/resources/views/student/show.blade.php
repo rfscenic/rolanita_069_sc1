@@ -25,6 +25,9 @@
                             Hapus
                         </button>
                     </form>
+                    <a href="{{ route('student.index') }}" class="btn btn-primary ml-3">
+                        Dashbord
+                    </a>
                 </div>
                 
                 <hr>
