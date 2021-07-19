@@ -38,6 +38,7 @@
                 @endif
 
                 <ul>
+                    <img height="200px" src="{{url('')}}/{{$student->image}}" class="rounded" alt="">
                     <li>NIM: {{$student->nim}} </li>
                     <li>Nama: {{$student->name}} </li>
                     <li>Jenis Kelamin:
