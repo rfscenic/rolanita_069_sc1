@@ -29,3 +29,7 @@ Route::delete('/student/{student}', 'StudentController@destroy') ->name('student
 Route::get('/login', 'AdminController@index')->name('login.index');
 Route::get('/logout', 'AdminController@logout')->name('login.logout');
 Route::post('/login', 'AdminController@process')->name('login.process');
+
+// Route untuk AdminLTE
+Route::get('/adminlte/index', 'AdminLTEController@index')->name('adminlte.index');
+Route::get('/adminlte/student/create', 'AdminLTEStudentController@create')->name('adminlte.student.create');

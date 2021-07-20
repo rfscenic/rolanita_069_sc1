@@ -51,7 +51,7 @@
                             <td>{{$mahasiswa->address == '' ? 'N/A' : $mahasiswa->address}}</td>
                         </tr>
                         @empty
-                            <td colspan="6" class="text-center">Tidak ada data...</td>
+                            <td colspan="7" class="text-center">Tidak ada data...</td>
                         @endforelse
                     </tbody>
                 </table>
